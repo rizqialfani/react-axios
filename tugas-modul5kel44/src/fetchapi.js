@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Card, Col, Row } from "antd";
 import "antd/dist/antd.css";
+import "./custom.css";
+
+const { Meta } = Card;
 
 export default class fetchapi extends Component {
     constructor(props) {
@@ -43,23 +46,27 @@ export default class fetchapi extends Component {
         return (<div>
             <div className="boxWhite">
                 <center>
-                    <h1>Komunitas di Kabupaten Purwakarta</h1>
+                    <h1 style={{ margin: "50px 0 50px 0" }}>Komunitas di Kabupaten Purwakarta</h1>
                 </center>
+                <Row gutter={[16, 16]} >
 
                 {this.state.purwakarta.map((results, index) => {
                     return (
-                        <center>
-                            <div className="card" key={results.id} style={{width: "20%", marginBottom: "50px"}}>
-                                <img src={results.logo_url} className="card-img-top" alt="..."/>
-                                <div className="card-body">
-                                    <h5 className="card-title">{results.nama}</h5>
-                                    <p className="card-text"><small className="text-muted">Komunitas {results.kategori}</small></p>
-                                    <p className="card-text">{results.deskripsi}</p>
-                                </div>
-                            </div>
-                        </center>
+                        <Col span={8} style={{ width: "100% !important" }}>
+                            <Card
+                                hoverable
+                                style={{ width: 300, margin: "0 60px 30px 60px", display: "inline-flex !important"}}
+                                cover={<img alt="..." src={results.logo_url} />}
+                                key={results.id}
+                            >
+                                <center>
+                                    <Meta title={results.nama} description={results.deskripsi} style={{whiteSpace: "none !important"}} />
+                                </center>
+                            </Card>
+                        </Col>
                     );
                 })}
+                </Row>
             </div>
         </div>);
     }

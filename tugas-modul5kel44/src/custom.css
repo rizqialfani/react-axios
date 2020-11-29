@@ -1,0 +1,11 @@
+.ant-card-meta-title {
+    white-space: pre-line !important;
+}
+
+.ant-card-bordered {
+    border: 3px solid #f0f0f0;
+}
+
+/* .ant-card {
+    display: grid;
+} */
